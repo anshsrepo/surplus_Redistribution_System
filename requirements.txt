@@ -1,0 +1,4 @@
+Flask==3.0.3
+Flask-SQLAlchemy==24.2
+mysql-connector-python==24.2
+Werkzeug==3.0.6

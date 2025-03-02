@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Manage Donations</title>
+    <link rel="stylesheet" href="/static/style.css">
+    
+        
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>Register a New Donation</h2>
+            <form action="/add_donation" method="POST">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" placeholder="E.g., New York" required>
+
+                <label for="food_type">Food Item:</label>
+                <input type="text" id="food_type" name="food_type" placeholder="E.g., Rice, Bread" required>
+
+                <label for="quantity">Quantity (e.g., number of servings):</label>
+                <input type="number" id="quantity" name="quantity" placeholder="E.g., 10" required>
+
+                <label for="expiration_date">Expiration Date:</label>
+                <input type="date" id="expiration_date" name="expiration_date" required>
+
+                <button type="submit">Add Donation</button>
+            </form>
+        </div>
+
+        <!-- Manage Donations Section -->
+        <h2>Manage Your Donations</h2>
+        <table>
+            <tr>
+                <th>Food Type</th>
+                <th>Quantity</th>
+                <th>Expiration Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            {% for donation in donations %}
+            <tr>
+                <td>{{ donation.food_type }}</td>
+                <td>{{ donation.quantity }}</td>
+                <td>{{ donation.expiration_date }}</td>
+                <td>{{ donation.status }}</td>
+                <td>
+                    <!-- Status Update Form -->
+                    <form action="/update_status/{{ donation.id }}" method="POST" style="display: inline;">
+                        <select name="status" required>
+                            <option value="available" {% if donation.status == 'available' %}selected{% endif %}>Available</option>
+                            <option value="requested" {% if donation.status == 'requested' %}selected{% endif %}>Requested</option>
+                            <option value="donated" {% if donation.status == 'donated' %}selected{% endif %}>Donated</option>
+                        </select>
+                        <button type="submit">Update</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

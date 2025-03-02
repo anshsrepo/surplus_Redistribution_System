@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<style>
+    /* General reset for consistent styling across browsers */
+body, h1, table, th, td {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f5f7fa;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header styling */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #4a90e2;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Table headers */
+thead {
+    background-color: #4a90e2;
+    color: #fff;
+}
+
+th {
+    padding: 15px;
+    text-align: left;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* Table rows */
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+td {
+    padding: 15px;
+    font-size: 0.9em;
+}
+
+/* Hover effect on rows */
+tbody tr:hover {
+    background-color: #f1f8ff;
+    cursor: pointer;
+}
+
+/* Status styling */
+td:nth-child(7) {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+td:nth-child(7):contains('completed') {
+    color: #4caf50;
+}
+
+td:nth-child(7):contains('pending') {
+    color: #ff9800;
+}
+
+td:nth-child(7):contains('rejected') {
+    color: #f44336;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    table {
+        font-size: 0.8em;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+}
+</style>
+<body>
+    <h1>Donation History</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Food Type</th>
+                <th>Quantity</th>
+                <th>City</th>
+
+                <th>Status</th>
+                {% if role == "charity" %}
+                    <th>Host</th>
+                    
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in donations %}
+                {% if role == "host" %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.food_type }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.city }}</td>
+
+                        <td>{{ item.status }}</td>
+                    </tr>
+                {% elif role == "charity" %}
+                    <tr>
+                        <td>{{ item[0].id }}</td> <!-- Access the donation's ID -->
+                        <td>{{ item[0].food_type }}</td> <!-- Access the donation's food_type -->
+                        <td>{{ item[0].quantity }}</td> <!-- Access the donation's quantity -->
+                        <td>{{ item[0].city }}</td> <!-- Access the donation's city -->
+
+                        <td>{{ item[0].status }}</td> <!-- Access the donation's status -->
+                        <td>{{ item[0].host.username }}</td> <!-- Access the host's username -->
+                        
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
