@@ -184,4 +184,4 @@ Tailwind CSS for UI inspiration.
 MySQL for reliable database management.
 
 
-🌟 Star this repository if you find it useful! For questions or feedback, open an issue or contact the maintainer at [your-email@example.com].
+🌟 Star this repository if you find it useful! For questions or feedback, open an issue or contact the maintainer at [balanansh123@gmail.com].
