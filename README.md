@@ -1,3 +1,13 @@
+![Image](https://github.com/user-attachments/assets/524b864a-f7c1-4ccd-aa80-d174a80f6631)
+
+![Image](https://github.com/user-attachments/assets/88c68355-4cc1-41b4-92b3-b05a3ee6ae09)
+
+![Image](https://github.com/user-attachments/assets/590f0ec9-5df1-42d5-95e6-6151128f81ee)
+
+![Image](https://github.com/user-attachments/assets/7a9dbfc9-e19e-4352-80c5-28e3ced78178)
+
+![Image](https://github.com/user-attachments/assets/732ef455-c765-41cf-97b7-063d7ae927b9)
+
 Food Donation Platform
 Connecting wedding hosts with charities to reduce food waste and support communities in need.
 The Food Donation Platform is a sophisticated web application built with Flask and MySQL, designed to streamline the process of donating surplus food from events like weddings to charitable organizations. This platform empowers wedding hosts to register and manage food donations while enabling charities to request and track available donations efficiently. With a modern, responsive UI and robust backend, it ensures seamless user interactions and secure data management.
